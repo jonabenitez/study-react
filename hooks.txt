@@ -1,0 +1,91 @@
+// ESTO NOS PERMITEN ENGANCHAR A TRAVEZ DE FUNCIONES EL CONCEPTO DEL ESTADO Y EL CICLO DE VIDA DE LOS COMPONENTES.
+// LOS HOOKS SE CREAN YA QUE LAS CLASES CONFUNDEN TANTO A LAS PERSONAS COMO A LAS MAQUINAS.
+// LAS FUNCIONES Y LOS OBJETOS SON DE LO MAS IMPORTANTE QUE TIENE JAVASCRIPT.
+
+// VERDADES DE LOS HOOKS..
+
+// 1) LOS HOOKS NO HACEN QUE LA APP SEA MAS RAPIDA, SI A NIVEL DE PESO PUEDE SER PERO NO DA VELOCIDAD.
+
+// 2)  LOS HOOKS NO HACEN MAS COSAS Q LOS COMPONENTES DE CLASES.
+
+// 3) LOS COMPONENTES DE CLASES NO VAN A DESAPARECER.
+
+
+// TIPOS DE HOOKS. 
+// BASICOS - en todos los proyectos (useState - useEffect)
+
+// AVANZADOS - (useContext - useRef - useReducer - useCallback - useMemo)
+
+//////// -----  useState --- ///////
+
+es el estado con su setState. igual que en las clases, pero este solo en una linea de codigo
+
+const [estado, setEstado] = useState(0);
+
+//// ------ useEfect --- //////////////
+
+ESTE COMPONENTE NOS VA A PERMITIR REPRESENTAR LAS 3 FASES DEL CICLO DE VIDA DEL COMPONENTE.
+
+.componentDidMount () - MONTAJE
+.componentDidUpdate () - ACTUALIZACION
+.componenetWillUnmount () - DESMONAJE
+
+la sintaxis va a cambiar dependiendo en que ciclo estemos trabajando
+
+CADA VEZ QUE SE NECESITE RENDERIZAR UN COMPONENTE, USEEFECT ES EL ENCARGADO DE EJECUTAR TODO LO QUE SE ENCUENTRA DENTRO DE EL.
+
+por ej: en un contador, al actualizarse cada segundo, el useEfect se estaria ejecutando en todo momento.
+
+//1 FASE DE  MONTAJE.
+Movy] = useState();
+
+  //  FASE DE MONATAJE - componentDidMout()
+1 mas usada - que se ejecute unica vez.
+  useEffect(() =>  {}, []);
+  //2 que se ejecute cuando un estado determinado cambie.
+  useEffect(() =>  {}, [Movy]);
+
+  //FASE DE ACTUALIZACION - componentDIdUpdate().
+  sintaxis: useEfect(()=>{'ESTADO'})
+
+  useEffect(() => {
+    console.log("fase de ACTUALIZACION - me ejecuto cada vez que se reenderice");
+    let detectarScroll = () => {
+      setMovy(window.scrollY);
+    };
+    // determinamos la funcion que va a detectar la posicion del scroll en la pantalla
+    window.addEventListener("scroll", detectarScroll);
+  });
+
+  //FASE DE DESMONAJE - componentWillUnmount()
+
+  al especificar que retorna una funcion, js entiende que es la fase de desmonaje
+
+
+useEffect(() =>{}; return () => {FUNCION QUE VAMOS A DESMONTAR},[ESTADO]);
+
+  para que sirve:
+  a) desuscribirte de servicios
+  b) desconectarte de API
+  c) limpiar manejadores de eventos
+  esto nos sirve para no consumir tanta memoria
+
+
+
+////////// PETICION ASINCONA CON AJAX Y API Y HOOKS //////
+VOLVEMOS A REALIZAR EL EJERCICIO CON LOS POKEMONES PERO AHORA CON HOOKS.
+
+UNA SINTAXIS INTERESANTE: {array.legth === 0 ?(mostra esto) : (sino mostra esto)}
+dentro del return, hay una especie de if
+
+ SI EL LARGO DE POKEMON ES 0 ? (MOSTRA CARGANDO) : SINO (EL COMPONENTE POKEMON)
+   {Pokemon.length === 0 ? (<h3>Cargando...</h3>):(
+      this.state.pokebola.map((element) => (
+        <Pokemon key={element.id} 
+        name={element.name}
+         avatar={element.avatar} />
+      ))
+      )}
+
+
+//// CUSTOM HOOKS - HOOKS PERSONALIZADOS /////
