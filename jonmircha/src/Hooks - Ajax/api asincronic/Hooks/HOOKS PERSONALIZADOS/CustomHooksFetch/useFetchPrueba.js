@@ -16,8 +16,7 @@ export const useFetchPrueba = (url) => {
   //PORQUE USAMOS EL USEEFECT??
   //porque podemos determinar cuando se activa una porcion de codigo, en base a algun cambio, ya sea en la interfaz o la data.
   // por lo tanto aca arranca la parte funcional del codigo, utilizando las variables de arriba y rambien para pasarle como parametro la url, para que entre como argumento en el getData.
-  useEffect(
-    (url) => {
+  useEffect(() => {
       //creamos la funcion que
       const getData = async (url) => {
         try {
@@ -62,5 +61,7 @@ export const useFetchPrueba = (url) => {
         getData(url)
     },  [url]  );
   //este[url] sirve para indicar que se actifa el useFerch cuando cambia la url
-  return {data,pending,error}
+  return {data,pending,error
+  
+}
 };

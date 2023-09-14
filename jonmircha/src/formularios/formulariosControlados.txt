@@ -1,0 +1,27 @@
+son los formularios trabajan con estado del componentes.
+
+lo que vamos a ver:
+como podemos interactuar con esto y sus valores
+diferentes tipos de input y su manipulacion
+
+
+////////////////////////////////////////
+COMO CAPTURAR LOS EVENTOS DEL FORMULARIO FACIL!
+1. SE CREA EL LABEL E INPUT, DENTRO DEL INPUT EL ONCHANE.
+onChange={(e)=>{setNombre(e.target.value)}} value={nombre} 
+2. SE CREA UN USESTATE DONDE VAMOS A GUARDAR LOS DATOS
+    const [nombre, setNombre] = useState("")
+
+3. LISTO YA QUEDAN GUARDADOS LOS DATOS EN EL ESTADO
+
+.funcion onchange
+ahora con las devTools que nos da react, no es necesario crear la funcion en la parte superior del componente,
+ya viene una por defecto que hay que redactarla nomas en en input.
+
+/////////////////////////////////////////
+
+INPUT RADIO:
+se manejan con valores  booleanos, true o false.
+LO IMPORTANTE ES QUE EL ATRIBUTO NAME TODOS TENGAN EL MISMO, PORQUE ES A PARTIR DE ESTE QUE SE VA A PODER SELECCIONAR UNA UNICA OPCION
+
+COMO PONER UN CHECK DEFAUT: DEFAULTCHECKED

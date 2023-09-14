@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Peliculas  from "./Peliculas1";
+import Peliculas  from "../Peliculas1";
 
 let pagina = 1;
 
